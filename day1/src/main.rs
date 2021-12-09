@@ -15,7 +15,6 @@ fn main() {
 
 fn task1(input: &Vec<i32>) -> i32 {
     input
-        .clone()
         .iter()
         .zip(input.iter().skip(1))
         .map(|(a, b)| if a < b { 1 } else { 0 })
@@ -26,17 +25,14 @@ fn task1(input: &Vec<i32>) -> i32 {
 
 fn task2(input: &Vec<i32>) -> i32 {
     let window = input
-        .clone()
         .iter()
         .zip(input.iter().skip(1))
         .zip(input.iter().skip(2))
         .map(|((a, b), c)| a + b + c)
         .collect::<Vec<i32>>();
-
     window
-        .clone()
         .iter()
-        .zip(window.clone().iter().skip(1))
+        .zip(window.iter().skip(1))
         .map(|(a, b)| if a < b { 1 } else { 0 })
         .collect::<Vec<i32>>()
         .iter()
